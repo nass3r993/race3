@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        h2 {
+            color: #1a73e8;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        code {
+            background-color: #f1f3f4;
+            padding: 8px 12px;
+            display: inline-block;
+            border-radius: 6px;
+            font-family: monospace;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .admin {
+            text-align: center;
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 1.2em;
+        }
+
+        .no-flag {
+            text-align: center;
+            color: #d32f2f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Dashboard</h2>
+        {% if flag %}
+            <p class="admin">Welcome Admin!</p>
+            <p><code>{{ flag }}</code></p>
+            <img src="{{ url_for('static', filename='cert.png') }}" alt="Admin Certificate">
+        {% else %}
+            <p class="admin">Welcome {{ session.email }}</p>
+            <p class="no-flag">No flag for you!</p>
+        {% endif %}
+    </div>
+</body>
+</html>
